@@ -4,12 +4,16 @@
     ViewData["Title"] = "Index";
 }
 
+@section styles {
+    <link rel="stylesheet" type="text/css" href="~/lib/DataTables/datatables.min.css" />
+}
+
 <h2>Lista de Produtos</h2>
 
 <p>
     <a asp-action="Create">Criar</a>
 </p>
-<table class="table">
+<table class="table" id="productTable">
     <thead>
         <tr>
             <th>
@@ -28,25 +32,39 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Report) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductType.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Amount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Value)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Report)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductType.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Value)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+@section scripts {    
+    <script type="text/javascript" src="~/lib/DataTables/datatables.min.js"></script>
+
+
+    <script>
+        var tabela = null;
+        $(document).ready(function () {
+            tabela =  $('#productTable').DataTable({                
+            });
+        });
+    </script>
+}
