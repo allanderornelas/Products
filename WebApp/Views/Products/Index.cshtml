@@ -48,8 +48,8 @@
                     @Html.DisplayFor(modelItem => item.Value)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Excluir", "Delete", new { id = item.Id })
                 </td>
             </tr>
         }
@@ -63,7 +63,19 @@
     <script>
         var tabela = null;
         $(document).ready(function () {
-            tabela =  $('#productTable').DataTable({                
+            tabela = $('#productTable').DataTable({     
+                "language": {
+                    "lengthMenu": "Exibir _MENU_ registros por página",
+                    "zeroRecords": "Nenhum Resultado",
+                    "info": "Exibindo _PAGE_ de _PAGES_",
+                    "infoEmpty": "Vazio",
+                    "infoFiltered": "(Filtrado de _MAX_ total registros)",
+                    "search": "Pesquisar",
+                    "paginate": {
+                        "previous": "Anterior",
+                        "next" : "Proxima"
+                    }
+                }
             });
         });
     </script>

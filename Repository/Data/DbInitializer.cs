@@ -20,8 +20,12 @@ namespace Repository.Data
 
             var ProductType = new ProductType[]
             {
-                new ProductType{ Name = "ProdutoTeste" },
+                new ProductType{ Name = "Papel" },
                 new ProductType{ Name = "Metal" },
+                new ProductType{ Name = "Borracha" },
+                new ProductType{ Name = "Pano" },
+                new ProductType{ Name = "Eletronico" },
+                new ProductType{ Name = "Vidro" }
 
             };
 
@@ -33,8 +37,7 @@ namespace Repository.Data
 
             var product = new Product[]
             {
-                new Product{ Name="Produto Teste", Amount=10, Value=15, ProductType = ProductType[0] },
-                new Product{ Name="Produto Teste", Amount=10, Value=15, ProductType = ProductType[1] }
+                new Product{ Name="Produto Teste", Amount=10, Value=15, ProductType = ProductType[0] },                
             };
 
             foreach (var prod in product)
