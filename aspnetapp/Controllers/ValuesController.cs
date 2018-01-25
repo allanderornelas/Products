@@ -24,9 +24,18 @@ namespace aspnetapp.Controllers
 
         // GET api/values
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult Get([FromQuery] int page, [FromQuery] int size)
         {
-            var product = _productContext.ListAll();
+            IEnumerable<Product> product = null;
+
+            if (page == 0 && size == 0)
+            {
+                product = _productContext.ListAll();
+            }
+            else
+            {
+                product = _productContext.ListAll().Skip(page - 1 * size).Take(size);
+            }
           
             return new ObjectResult(product);
         }

@@ -24,8 +24,9 @@ namespace WebApp.Controllers
         public IActionResult Index()
         {
             ProductsViewModel model = new ProductsViewModel();            
+            var products = _productService.GetAllProducts();
 
-            model.Report = _productService.GetAllProducts();
+            model.Report = products == null ? new List<Product>() : products;
 
             return View(model);
         }
